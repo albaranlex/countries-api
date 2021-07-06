@@ -1,0 +1,27 @@
+.form-container {
+  @include flex-center;
+  min-width: 500px;
+  height: auto;
+  margin: 20px 10px;
+
+  input {
+    background-color: transparent;
+    border: 1px solid $primary;
+    margin: 5px;
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    text-align: left;
+    color: #343434;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    background-color: $primary;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 40px;
+  }
+}
