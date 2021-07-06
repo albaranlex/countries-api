@@ -32,3 +32,9 @@
 .results-container {
   height: 90vh;
 }
+
+.loading {
+  @include flex-center;
+  width: 100vw;
+  height: 100vh;
+}

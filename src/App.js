@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Loading from "./components/Loading";
 import Country from "./components/Country";
 import Header from "./components/Header";
 import { BiSearchAlt } from "react-icons/bi";
+import DotLoader from "react-spinners/DotLoader";
+
 const App = () => {
   const [userInput, setUserInput] = useState("");
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
+
   const getCountry = (status, countryName) => {
     let textToUrl = encodeURIComponent(countryName);
     let endPoint = `https://restcountries.eu/rest/v2/${status}/${textToUrl}`;
@@ -33,7 +37,13 @@ const App = () => {
     getCountry("name", userInput);
     setUserInput("");
   }
-  if (loading) return <Loading />;
+
+  if (loading)
+    return (
+      <div className="loading">
+        <DotLoader size={30} color={"#00e5ff"} loading={loading} />;
+      </div>
+    );
 
   return (
     <div>
